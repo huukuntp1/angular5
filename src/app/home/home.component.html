@@ -1,0 +1,24 @@
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">My To Do List</h2>
+  <input [(ngModel)]="title" name="title" type="text" id="myInput" placeholder="Title...">
+  <span (click)="addTitle()" class="addBtn">Add</span>
+</div>
+<div class="filter">
+  <button (click) = "filterActive()">Active</button>
+  <button (click) = "infilterActive()">inactive</button>
+  <button (click) = "fullList()">Full list</button>
+</div>
+<ul id="myUL"
+  [class.active] = "listactive"
+  [class.inactive] = "listinactive"
+>
+  <li
+    *ngFor = "let item of list; let i = index"
+    [class.checked] = "(arrActive.indexOf(item.id) > -1)"
+    [class.displayItem] = "((arrActive.indexOf(item.id) > -1) && isBool)"
+    (click) = "isChecked(item.id)"
+  >
+    {{ item.name }}
+    <span class="close" (click)="deleteItem(i, item.id)">×</span>
+  </li>
+</ul>

@@ -1,0 +1,13 @@
+.component_index {
+  position: relative;
+}
+.component_index h2 {
+  position: absolute;
+  text-align: center;
+  font-size: 35px;
+  top: 0;
+  color: #d16710;
+}
+img {
+  width: 100%;
+}

@@ -1,0 +1,53 @@
+<form #f="ngForm" (ngSubmit) = "handleSubmit(f)" class="form_search">
+  <div class="imgcontainer">
+    <img src="assets/images/weather-img.jpg" alt="Avatar" class="avatar">
+  </div>
+  <div class="container">
+    <label for="uname"><b>Your city name</b></label>
+    <input type="text" placeholder="Your city name" name="YourCityName" ngModel>
+    <button type="submit">Find</button>
+  </div>
+</form>
+<div class="info_center">
+  <div *ngIf="dataCity != ''" class="item_info_center">
+    <div class="info_search">
+      <div class="title">
+        Weather in {{ dataCity.name }}, {{ dataCity.sys.country }}
+      </div>
+      <div class="weather">
+        <div
+          *ngFor = "let item of dataCity.weather"
+        >
+          <div class="temp">
+            <img src="https://openweathermap.org/img/w/{{ item.icon }}.png" alt=""/>
+            <span>{{ dataCity.main.temp }} &deg;C</span>
+          </div>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div  *ngIf="chart" class="chart item_info_center">
+      <h2>Weather and forecasts in {{ dataForecast.city.name }}, {{ dataForecast.city.country }}</h2>
+      <canvas id="canvas">{{ chart }}</canvas>
+    </div>
+</div>
+
+<div class="forecast" *ngIf = "dataForecast != ''">
+  <h2>13 day weather forecast in {{ dataForecast.city.name }}, {{ dataForecast.city.country }}</h2>
+  <div
+    class="list_forecast"
+    *ngFor="let list of dataForecast.list"
+  >
+    <div class="item">
+      {{ list.dt_txt | date : format : timezone}}
+      <img src="https://openweathermap.org/img/w/{{ list.weather[0].icon }}.png" alt=""/>
+    </div>
+    <div class="item">
+      <span class="temp">
+        {{ list.main.temp }} &deg;C
+      </span>
+      <p>{{ list.weather[0].description }}</p>
+    </div>
+  </div>
+</div>
