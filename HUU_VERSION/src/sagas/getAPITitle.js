@@ -9,7 +9,7 @@ export function* getAPITitle(_url){
           method: 'GET',
           url: _url
       });
-      console.log(data)
+
       yield data.data && put( currentData(data.data) );
     } catch (error) {
       console.log(error)

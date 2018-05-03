@@ -21,7 +21,6 @@ class ListTitle extends Component {
         <ul id="myUL">
           {
             this.props.listTitle.map((ele, index) => {
-              console.log(ele)
               return <ItemComponent
                         item = { ele }
                         key = { index }

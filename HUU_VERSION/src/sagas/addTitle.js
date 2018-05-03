@@ -1,13 +1,14 @@
-import { put, takeLatest  } from 'redux-saga/effects';
+import { put, takeLatest, call  } from 'redux-saga/effects';
 import axios from 'axios';
 
-import { actionListTitleNew } from '../actions/index'
+import { currentData } from '../actions/';
+import { refreshAPI } from './refreshDB';
 
 const _url = 'http://5ae0da06ee98370014cf2429.mockapi.io/user';
 
 function* addTitle({ title, status } = {}) {
     try {
-      const { data } = yield axios({
+      yield axios({
           method: 'post',
           url: _url,
           data: {
@@ -16,7 +17,8 @@ function* addTitle({ title, status } = {}) {
           }
       });
 
-      yield data && put( actionListTitleNew( data.id, title, status ));
+      const currentDB = yield call(refreshAPI, _url);
+      yield currentDB && put( currentData(currentDB) );
 
     } catch (error) {
       console.log(error)
