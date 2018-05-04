@@ -18,6 +18,13 @@ import { WeatherSearchComponent } from './weather-search/weather-search.componen
 import { WeatherInfoResultComponent } from './weather-info-result/weather-info-result.component';
 import { WetherChartComponent } from './wether-chart/wether-chart.component';
 import { WeatherService } from './weather.service';
+import { SuccessComponent } from './success/success.component';
+import { ConduitComponent } from './conduit/conduit.component';
+import { mainFunction } from './core/services/mainFunction.service';
+import { getTagsService } from './core/services/getTags.service';
+import { getArticleService } from './core/services/getArticle.service';
+import { ArticleComponent } from './article/article.component';
+import { ArticleItemComponent } from './article-item/article-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +38,11 @@ import { WeatherService } from './weather.service';
     WeatherComponent,
     WeatherSearchComponent,
     WeatherInfoResultComponent,
-    WetherChartComponent
+    WetherChartComponent,
+    SuccessComponent,
+    ConduitComponent,
+    ArticleComponent,
+    ArticleItemComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +53,13 @@ import { WeatherService } from './weather.service';
       apiKey: 'AIzaSyDIcgayYKPPDnRhRPUdgsCi63XC3-VB12k'
     })
   ],
-  providers: [LoginService, WeatherService],
+  providers: [
+    LoginService,
+    WeatherService,
+    mainFunction,
+    getTagsService,
+    getArticleService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,7 +16,9 @@ export class WeatherSearchComponent implements OnInit {
   public city: string;
   chart = [];
 
-  constructor(private weatherService: WeatherService) {
+  constructor(
+    private weatherService: WeatherService
+  ) {
 
   }
 
@@ -30,42 +32,39 @@ export class WeatherSearchComponent implements OnInit {
   }
 
   fetchDataCity (f) {
-    this.weatherService.getAPIByCity(f)
-    .subscribe(
-      (res) => {
-        // res = Array.isArray(res) ? res : [res];
-        this.dataCity = res;
-        this.fetchDataForecast(res['id'])
-      }
-    )
+    this.weatherService
+      .getAPIByCity(f)
+      .subscribe(
+        (res) => {
+          this.dataCity = res;
+          this.fetchDataForecast(res['id'])
+        }
+      )
   }
 
   fetchDataForecast (id) {
-    this.weatherService.getAPIByForecast(id)
+
+    this.weatherService
+      .getAPIByForecast(id)
       .subscribe(
         (res) => {
           this.dataForecast = res;
-
           let temp_max = res['list'].map(res => res.main.temp_max);
           let temp_min = res['list'].map(res => res.main.temp_min);
           let alldates = res['list'].map(res => res.dt);
           let weatherDates = [];
 
-
-          console.log(temp_max);
-          console.log(temp_min);
-          console.log(alldates);
-          console.log(res);
-
           alldates.map((res)=>{
-            let jsDate = new Date(res * 1000)
-            console.log(jsDate);
-            weatherDates.push(jsDate.toLocaleDateString('en', {
-              year: 'numeric', month: 'short', day: 'numeric'
-            }))
-          })
+            let jsDate = new Date(res * 1000);
 
-          console.log(weatherDates)
+            weatherDates.push(
+              jsDate.toLocaleDateString('en', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })
+          );
+          })
 
           this.chart = new Chart('canvas', {
             type: 'line',

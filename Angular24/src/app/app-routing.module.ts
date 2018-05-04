@@ -4,14 +4,39 @@ import { IndexComponent } from './index/index.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { WeatherComponent } from './weather/weather.component'
+import { WeatherComponent } from './weather/weather.component';
+import { SuccessComponent } from './success/success.component';
+import { ConduitComponent } from './conduit/conduit.component';
 
 const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'todo', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'weather', component: WeatherComponent }
+  {
+    path: '',
+    component: IndexComponent
+  },
+  {
+    path: 'todo',
+    component: HomeComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'weather',
+    component: WeatherComponent
+  },
+  {
+    path: 'success',
+    component: SuccessComponent
+  },
+  {
+    path: 'conduit',
+    component: ConduitComponent
+  },
 ];
 
 @NgModule({
