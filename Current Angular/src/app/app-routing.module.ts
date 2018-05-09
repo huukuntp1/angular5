@@ -7,6 +7,8 @@ import { RegisterComponent } from './register/register.component';
 import { WeatherComponent } from './weather/weather.component';
 import { SuccessComponent } from './success/success.component';
 import { ConduitComponent } from './conduit/conduit.component';
+import { SettingComponent } from './setting/setting.component';
+import { NewArticleComponent } from './new-article/new-article.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,14 @@ const routes: Routes = [
   {
     path: 'conduit',
     component: ConduitComponent
+  },
+  {
+    path: 'setting',
+    component: SettingComponent
+  },
+  {
+    path: 'newarticle',
+    component: NewArticleComponent
   },
 ];
 

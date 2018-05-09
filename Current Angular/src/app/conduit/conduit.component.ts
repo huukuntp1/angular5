@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import {
   getTagsService,
   getArticleService,
-  optionsArticlesService
+  optionsArticlesService,
+  userService
 } from '../core/services';
 
 import { CONFIG } from '../core/libs/config';
@@ -23,11 +24,13 @@ export class ConduitComponent implements OnInit {
   constructor(
     private getTagsService: getTagsService,
     private getArticleService: getArticleService,
-    private optionsArticlesService: optionsArticlesService
+    private optionsArticlesService: optionsArticlesService,
+    private userService: userService
   ) { }
 
   ngOnInit() {
     this.optionsArticlesService.currentDataParamArticles.subscribe(res => this.params = res);
+    this.userService.currentDataUser.subscribe(res => console.log(res))
     this.getTags();
   }
 

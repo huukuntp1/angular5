@@ -36,6 +36,6 @@ export class LoginComponent implements OnInit {
       }
     }
     this.userService.userLogin(infoUser)
-      .subscribe(res => console.log(res))
+      .subscribe(res => res && this.router.navigateByUrl('/conduit'))
   }
 }

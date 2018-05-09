@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule
+} from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -28,6 +31,8 @@ import { userService } from './core/services/user.service';
 import { ArticleComponent } from './article/article.component';
 import { ArticleItemComponent } from './article-item/article-item.component';
 import { PagingArticleComponent } from './paging-article/paging-article.component';
+import { SettingComponent } from './setting/setting.component';
+import { NewArticleComponent } from './new-article/new-article.component';
 
 @NgModule({
   declarations: [
@@ -46,11 +51,14 @@ import { PagingArticleComponent } from './paging-article/paging-article.componen
     ConduitComponent,
     ArticleComponent,
     ArticleItemComponent,
-    PagingArticleComponent
+    PagingArticleComponent,
+    SettingComponent,
+    NewArticleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     AgmCoreModule.forRoot({

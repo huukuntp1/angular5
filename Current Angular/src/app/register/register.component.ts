@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {
+  Router,
+  ActivatedRoute
+} from '@angular/router';
 
 import { userService } from '../core/services';
 
@@ -11,7 +15,8 @@ import { userService } from '../core/services';
 export class RegisterComponent implements OnInit {
 
   constructor(
-    private userService: userService
+    private userService: userService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -27,6 +32,6 @@ export class RegisterComponent implements OnInit {
     }
 
     this.userService.userRegister(infoUser)
-      .subscribe(res => console.log(res))
+      .subscribe((res) => res && this.router.navigateByUrl('/conduit'))
   }
 }

@@ -1,8 +1,56 @@
 <ul class="menu">
   <li><a  routerLink=''>Home</a></li>
   <li><a routerLink='/todo'>To Do</a></li>
-  <li><a routerLink='/login'>Login</a></li>
-  <li><a routerLink='/register'>Register</a></li>
   <li><a routerLink='/weather'>Weather</a></li>
-  <li><a routerLink='/conduit'>Conduit</a></li>
+  <li>
+    <a
+      routerLink='/login'
+      *ngIf = "!isAuthed"
+    >
+      Login
+    </a>
+  </li>
+  <li>
+    <a
+      routerLink='/register'
+      *ngIf = "!isAuthed"
+    >
+      Register
+    </a>
+  </li>
+  <li>
+    <a routerLink='/conduit'>Conduit</a>
+  </li>
+  <li>
+    <a
+      routerLink = '/newarticle'
+      *ngIf = "isAuthed"
+    >
+      New Article
+    </a>
+  </li>
+  <li>
+    <a
+      routerLink = '/setting'
+      *ngIf = "isAuthed"
+    >
+      Setting
+    </a>
+  </li>
+  <li>
+    <a
+      routerLink = '/profile'
+      *ngIf = "isAuthed"
+    >
+      Hi {{ userName }} !
+    </a>
+  </li>
+  <li>
+    <a
+      *ngIf = "isAuthed"
+      (click) = "Logout()"
+    >
+      Logout
+    </a>
+  </li>
 </ul>

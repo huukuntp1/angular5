@@ -17,9 +17,9 @@ export class mainFunction {
 
   private url = CONFIG.urlAPI;
   private httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
     })
   };
 
@@ -43,8 +43,41 @@ export class mainFunction {
                 .catch(this.errorHandle)
   }
 
+  putData (path: string, body: Object = {}): Observable<any> {
+    // Authorization
+    const token = this.getUserToLocalStorage().token;
+    if ( token ) {
+      this.httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Token ${token}`
+        })
+      }
+    }
+    return this.http
+                .put(
+                  `${this.url}${path}`,
+                  body,
+                  this.httpOptions
+                )
+                .catch(this.errorHandle)
+  }
+
   errorHandle (err: HttpErrorResponse) {
     return Observable
             .throw('Message: ' + err.message + ' - Status: ' + err.status)
+  }
+
+  getUserToLocalStorage () {
+    return JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  saveUserToLocalStorage ( user: object ) {
+    localStorage.setItem('currentUser',JSON.stringify(user));
+  }
+
+  removeUserToLocalStorage () {
+    window.localStorage.removeItem('currentUser');
   }
 }

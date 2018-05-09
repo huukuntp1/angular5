@@ -12,7 +12,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { map } from 'rxjs/operators/map';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { distinctUntilChanged } from 'rxjs/operators/distinctUntilChanged';
 
 import { Article } from '../models/article.model'
 import { CONFIG } from '../libs/config'
@@ -22,7 +21,7 @@ import { mainFunction } from './mainFunction.service';
 @Injectable()
 export class getArticleService {
   private dataArticles = new BehaviorSubject<any>({});
-  currentDataArticles = this.dataArticles.asObservable().pipe(distinctUntilChanged());
+  currentDataArticles = this.dataArticles.asObservable();
 
   public params = {
     limit: CONFIG.limit
