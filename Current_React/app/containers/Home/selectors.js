@@ -7,14 +7,26 @@ const makeSelectHome = () => createSelector(
   (substate) => substate.toJS()
 );
 
-const makeGetArticles = () => createSelector(
+const makeSelectGetArticles = () => createSelector(
   selectHomeDomain,
   (homeState) => homeState.get('articles')
 );
 
+const makeSelectGetArticlesCount = () => createSelector(
+  selectHomeDomain,
+  (homeState) => homeState.get('articlesCount')
+);
+
+const makeSelectGetTags = () => createSelector(
+  selectHomeDomain,
+  (homeState) => homeState.get('tags')
+);
+
 export {
   makeSelectHome,
-  makeGetArticles
+  makeSelectGetArticles,
+  makeSelectGetArticlesCount,
+  makeSelectGetTags
 };
 
 export {

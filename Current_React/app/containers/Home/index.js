@@ -15,81 +15,54 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import {
   makeSelectHome,
-  makeGetArticles
+  makeSelectGetArticles,
+  makeSelectGetArticlesCount,
+  makeSelectGetTags
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
+import {
+  GET_ARTICLES,
+  GET_TAGS
+} from './constants';
 
-export class Home extends React.Component { // eslint-disable-line react/prefer-stateless-function
+import Articles from 'components/Homepage/Articles';
+import Tags from 'components/Homepage/Tags';
+import Banner from 'components/Homepage/Banner';
+import ToggleFeed from 'components/Homepage/ToggleFeed';
+// import Homepage from '../components/Homepage'
+
+export class Home extends React.Component {
+  componentDidMount () {
+    this.props.getArticles();
+    this.props.getTags();
+  }
+
   render() {
-    console.log(this.props.articles)
+    const {
+      articles,
+      articlesCount,
+      tags
+    } = this.props
+
     return (
       <div className="home-page">
-        <div className="banner">
-          <div className="container">
-            <h1 className="logo-font">
-              Conduit
-            </h1>
-            <p>A place to share your knowledge.</p>
-          </div>
-        </div>
+        <Banner/>
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
-              <div className = "feed-toggle">
-                <ul className = "nav nav-pills outline-active">
-                  <li className = "nav-item">
-                    <a className = "nav-link disabled" href="">Your Feed</a>
-                  </li>
-                  <li className = "nav-item">
-                    <a className = "nav-link active" href="">Global Feed</a>
-                  </li>
-                </ul>
-              </div>
-              {
-                this.props.articles.map((item, key) => {
-                  return (
-                    <div className = "article-preview" key = { key }>
-                      <div className = "article-meta">
-                        <a href="profile.html">
-                          <img src = { item.author.image } />
-                        </a>
-                        <div className = "info">
-                          <a href="" className = "author">
-                            { item.author.username }
-                          </a>
-                          <span className = "date">
-                            {new Date(item.createdAt).toDateString()}
-                          </span>
-                        </div>
-                        <button
-                          className = "btn btn-outline-primary btn-sm pull-xs-right"
-                        >
-                          <i className = "ion-heart"></i>
-                          { item.favoritesCount }
-                        </button>
-                      </div>
-                      <a href="" className = "preview-link">
-                        <h1>{ item.title }</h1>
-                        <p>{ item.description }</p>
-                        <span>Read more...</span>
-                      </a>
-                    </div>
-                  )
-                })
-              }
+              <ToggleFeed/>
+              <Articles
+                articles = { articles }
+                articlesCount = { articlesCount }
+                tags = { tags }
+              />
             </div>
-
             <div className="col-md-3">
-              <div className="sidebar">
-                <p>Popular Tags</p>
-                {/* <Tags
-                  tags={this.props.tags}
-                  onClickTag={this.props.onClickTag}
-                /> */}
-              </div>
+              <Tags
+                tags = { tags }
+              />
             </div>
-
           </div>
         </div>
       </div>
@@ -103,11 +76,25 @@ Home.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   home: makeSelectHome(),
-  articles: makeGetArticles(),
+  articles: makeSelectGetArticles(),
+  articlesCount: makeSelectGetArticlesCount(),
+  tags: makeSelectGetTags()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
+    getArticles: () => {
+      dispatch({
+        type: GET_ARTICLES,
+        payload: {}
+      })
+    },
+    getTags: () => {
+      dispatch({
+        type: GET_TAGS,
+        payload: {}
+      })
+    },
     dispatch,
   };
 }

@@ -23,11 +23,22 @@ const defaultCfgOpts = {
 
 const Article = {
   getData: (opt) => {
-    const options = JSON.parse(JSON.stringify(defaultCfgOpts));
+    const options = defaultCfgOpts;
+    return axios(options)
+  }
+};
+
+const Tags = {
+  getData: (opt) => {
+    const options = Object.assign({},defaultCfgOpts, {
+      url: '/tags',
+      params: {}
+    });
     return axios(options)
   }
 };
 
 export {
-  Article
+  Article,
+  Tags
 };

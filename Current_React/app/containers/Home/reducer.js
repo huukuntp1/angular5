@@ -7,11 +7,13 @@
 import { fromJS } from 'immutable';
 import {
   DEFAULT_ACTION,
-  GET_ARTICLES
+  GET_ARTICLES_SUCCESS,
+  GET_TAGS_SUCCESS,
 } from './constants';
 
 const initialState = fromJS({
-  'articles': []
+  'articles': [],
+  'tags': []
 });
 
 function homeReducer(state = initialState, { type, payload }) {
@@ -20,9 +22,14 @@ function homeReducer(state = initialState, { type, payload }) {
     case DEFAULT_ACTION:
       return state;
 
-    case GET_ARTICLES:
+    case GET_ARTICLES_SUCCESS:
       return state
-        .set('articles', payload.articles);
+        .set('articles', payload.articles)
+        .set('articlesCount', payload.articlesCount);
+
+    case GET_TAGS_SUCCESS:
+      return state
+        .set('tags', payload.tags);
 
     default:
       return state;
