@@ -1,6 +1,5 @@
 import React from 'react';
 import Article from './article';
-import Paging from './paging';
 
 class Articles extends React.Component {
   render() {
@@ -21,7 +20,6 @@ class Articles extends React.Component {
             )
           })
         }
-        <Paging articlesCount = { articlesCount } />
       </div>
     );
   }

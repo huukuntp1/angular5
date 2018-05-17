@@ -22,11 +22,29 @@ const makeSelectGetTags = () => createSelector(
   (homeState) => homeState.get('tags')
 );
 
+const makeSelectGetFaild = () => createSelector(
+  selectHomeDomain,
+  (homeState) => homeState.get('error')
+);
+
+const makeSelectParamsArticles = () => createSelector(
+  selectHomeDomain,
+  (homeState) => homeState.get('defaultParamsArticles')
+);
+
+const makeSelectCurrentPage = () => createSelector(
+  selectHomeDomain,
+  (homeState) => homeState.get('currentPage')
+);
+
 export {
   makeSelectHome,
   makeSelectGetArticles,
   makeSelectGetArticlesCount,
-  makeSelectGetTags
+  makeSelectGetTags,
+  makeSelectGetFaild,
+  makeSelectParamsArticles,
+  makeSelectCurrentPage
 };
 
 export {

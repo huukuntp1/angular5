@@ -4,6 +4,7 @@ import {
   put,
   select,
   takeEvery,
+  takeLatest,
   fork
 } from 'redux-saga/effects';
 
@@ -11,39 +12,56 @@ import {
   GET_ARTICLES,
   GET_ARTICLES_SUCCESS,
   GET_TAGS,
-  GET_TAGS_SUCCESS
+  GET_TAGS_SUCCESS,
+  GET_MESSAGE_ERROR,
+  GET_ARTICLES_BY_TAGS
 } from './constants';
 
 import {
-  Article,
-  Tags
+  getData
 } from '../../utils/mainFunction';
 
-function* getArticles () {
+function* getArticles ({payload: { params }}) {
   try {
-    const { data: { articlesCount, articles } } = yield call(Article.getData, {})
+    const { data: { articlesCount, articles } } = yield call(getData,
+      { url: '/articles', params }
+    )
 
     yield put({
       type: GET_ARTICLES_SUCCESS,
       payload: { articles, articlesCount }
     })
   }
-  catch (error) {
-    console.log(error)
+
+  catch ({message}) {
+    yield put({
+      type: GET_MESSAGE_ERROR,
+      payload: {
+        message: `Msg Error Articles: ${message}`
+      }
+    })
   }
 }
 
 function* getTags () {
   try {
-    const {data: { tags }} = yield call(Tags.getData, {})
+    const { data: { tags } } = yield call(getData,
+      { url: '/tags'}
+    )
 
     yield put({
       type: GET_TAGS_SUCCESS,
-      payload: { tags, tags }
+      payload: { tags }
     })
   }
-  catch (error) {
-    console.log(error)
+
+  catch ({message}) {
+    yield put({
+      type: GET_MESSAGE_ERROR,
+      payload: {
+        message: `Msg Error Tags: ${message}`
+      }
+    })
   }
 }
 

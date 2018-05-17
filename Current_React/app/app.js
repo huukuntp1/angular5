@@ -13,6 +13,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+import { Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
 import createHistory from 'history/createBrowserHistory';
 import 'sanitize.css/sanitize.css';
 
@@ -50,15 +52,35 @@ const initialState = {};
 const history = createHistory();
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+const options = {
+  timeout: 5000,
+  position: "bottom center"
+};
 
 const render = (messages) => {
+  // ReactDOM.render(
+  //   <Provider store={store}>
+  //     <AlertProvider template={<div></div>}>
+  //       <h1>Taa</h1>
+  //     {/* <AlertProvider> */}
+  //       {/* <LanguageProvider messages={messages}>
+  //         <ConnectedRouter history={history}>
+  //           <App />
+  //         </ConnectedRouter>
+  //       </LanguageProvider> */}
+  //     </AlertProvider>
+  //   </Provider>,
+  //   MOUNT_NODE
+  // );
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
+        </LanguageProvider>
+      </AlertProvider>
     </Provider>,
     MOUNT_NODE
   );

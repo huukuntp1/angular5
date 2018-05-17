@@ -1,38 +1,49 @@
 import React from 'react';
 
+import {
+  CONFIG
+} from '../../utils/config'
+
 class Paging extends React.Component {
   render() {
     const {
-      articlesCount
+      articlesCount,
+      currentPage,
+      goPage
     } = this.props
 
-    const count = articlesCount ? articlesCount : 0
-    const newArray = new Array(Math.round(count / 10));
+    const {
+      limit
+    } = CONFIG
 
-    const totalPage = Array.from(newArray, (val, index) => index + 1)
+    const totalPage = Array.from(
+      new Array(Math.round(articlesCount / limit)), (val,index) => index
+    )
 
-    console.log(totalPage)
-
-    console.log(newArray)
-
-    // const totalPage = Array.from(
-    //   new Array(
-    //     Math.round(articlesCount)
-    //   ), val, index => index + 1
-    // )
-
-    // console.log(totalPage)
     return (
       <nav>
         <ul className="pagination">
           {
 
-            totalPage.map((val, key) => {
+            totalPage.map((val, index) => {
+              const isCurrent = val === currentPage;
+
+              const onClickPaging = (evt) => {
+                evt.preventDefault();
+
+                const offset = index * 10
+                console.log(currentPage)
+                goPage(offset)
+              }
               return (
                 <li
-                  key = { key }
+                  className ={
+                    isCurrent ? "page-item active" : "page-item"
+                  }
+                  key = { index }
+                  onClick = { onClickPaging }
                 >
-                  <a className="page-link" href="">{ val }</a>
+                  <a className="page-link" href="">{ val + 1 }</a>
                 </li>
               );
             })

@@ -17,37 +17,72 @@ import {
   makeSelectHome,
   makeSelectGetArticles,
   makeSelectGetArticlesCount,
-  makeSelectGetTags
+  makeSelectGetTags,
+  makeSelectGetFaild,
+  makeSelectParamsArticles,
+  makeSelectCurrentPage
 } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import {
   GET_ARTICLES,
-  GET_TAGS
+  GET_TAGS,
+  GET_ARTICLES_BY_TAGS,
+  SET_PARAMS_ARTICLES
 } from './constants';
 
 import Articles from 'components/Homepage/Articles';
 import Tags from 'components/Homepage/Tags';
 import Banner from 'components/Homepage/Banner';
 import ToggleFeed from 'components/Homepage/ToggleFeed';
+import MsgError from 'components/MsgError';
+import { CONFIG } from '../../utils/config'
+import Paging from 'components/Homepage/paging';
 // import Homepage from '../components/Homepage'
+
+const defaultParamsArticles = {
+  limit: CONFIG.limit,
+  offset: CONFIG.offset
+}
 
 export class Home extends React.Component {
   componentDidMount () {
-    this.props.getArticles();
+    this.props.getArticles(defaultParamsArticles);
     this.props.getTags();
+    this.props.setParamsArticles(defaultParamsArticles);
   }
 
   render() {
     const {
       articles,
       articlesCount,
-      tags
+      tags,
+      msgError,
+      paramsArticles,
+      currentPage
     } = this.props
+
+    const filterTags = (tag) => {
+      const setParamsArticles = Object.assign({},
+        paramsArticles, {
+          tag
+        }
+      )
+      this.props.getArticles(setParamsArticles);
+      this.props.setParamsArticles(setParamsArticles)
+    }
+
+    const goPage = (offset) => {
+      this.props.getArticles(
+        Object.assign({}, paramsArticles, {
+          offset
+        })
+      )
+    }
 
     return (
       <div className="home-page">
-        <Banner/>
+        <Banner msgError = { msgError }/>
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
@@ -57,10 +92,16 @@ export class Home extends React.Component {
                 articlesCount = { articlesCount }
                 tags = { tags }
               />
+              <Paging
+                articlesCount = { articlesCount }
+                goPage = { goPage }
+                currentPage = { currentPage }
+              />
             </div>
             <div className="col-md-3">
               <Tags
                 tags = { tags }
+                filterTags = { filterTags }
               />
             </div>
           </div>
@@ -78,23 +119,48 @@ const mapStateToProps = createStructuredSelector({
   home: makeSelectHome(),
   articles: makeSelectGetArticles(),
   articlesCount: makeSelectGetArticlesCount(),
-  tags: makeSelectGetTags()
+  tags: makeSelectGetTags(),
+  msgError: makeSelectGetFaild(),
+  paramsArticles: makeSelectParamsArticles(),
+  currentPage: makeSelectCurrentPage()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    getArticles: () => {
+    getArticles: (params) => {
       dispatch({
         type: GET_ARTICLES,
-        payload: {}
+        payload: {
+          params
+        }
       })
     },
+
     getTags: () => {
       dispatch({
         type: GET_TAGS,
         payload: {}
       })
     },
+
+    getArticlesByTag: (tag) => {
+      dispatch({
+        type: GET_ARTICLES_BY_TAGS,
+        payload: {
+          params: tag
+        }
+      })
+    },
+
+    setParamsArticles: (params) => {
+      dispatch({
+        type: SET_PARAMS_ARTICLES,
+        payload: {
+          params
+        }
+      })
+    },
+
     dispatch,
   };
 }

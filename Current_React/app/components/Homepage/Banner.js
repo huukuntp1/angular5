@@ -3,8 +3,10 @@ import React from 'react';
 class Banner extends React.Component {
   render() {
     const {
-      tags
+      tags,
+      msgError
     } = this.props
+
     return (
       <div className="banner">
         <div className="container">
@@ -12,6 +14,14 @@ class Banner extends React.Component {
             Conduit
           </h1>
           <p>A place to share your knowledge.</p>
+          {
+
+            msgError.map((msg)=> {
+              return (
+                <p key = {msg}>{ msg }</p>
+              )
+            })
+          }
         </div>
       </div>
     );
