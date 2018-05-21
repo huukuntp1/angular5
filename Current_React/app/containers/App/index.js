@@ -12,12 +12,17 @@
  */
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 
 import HomePage from 'containers/Home';
-import Login from 'containers/Login';
+import User from 'containers/User';
 import Header from './Header';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Login from 'components/UserComponents/Login'
+import Register from 'components/UserComponents/Register'
+
+const loginHoc = User(Login)
+const registerHoc = User(Register)
 
 export default function App() {
   return (
@@ -25,7 +30,8 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={loginHoc} />
+        <Route path="/register" component={registerHoc} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

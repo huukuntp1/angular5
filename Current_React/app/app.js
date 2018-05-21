@@ -58,20 +58,6 @@ const options = {
 };
 
 const render = (messages) => {
-  // ReactDOM.render(
-  //   <Provider store={store}>
-  //     <AlertProvider template={<div></div>}>
-  //       <h1>Taa</h1>
-  //     {/* <AlertProvider> */}
-  //       {/* <LanguageProvider messages={messages}>
-  //         <ConnectedRouter history={history}>
-  //           <App />
-  //         </ConnectedRouter>
-  //       </LanguageProvider> */}
-  //     </AlertProvider>
-  //   </Provider>,
-  //   MOUNT_NODE
-  // );
   ReactDOM.render(
     <Provider store={store}>
       <AlertProvider template={AlertTemplate} {...options}>

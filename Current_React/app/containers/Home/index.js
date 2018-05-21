@@ -31,13 +31,13 @@ import {
   SET_PARAMS_ARTICLES
 } from './constants';
 
-import Articles from 'components/Homepage/Articles';
-import Tags from 'components/Homepage/Tags';
-import Banner from 'components/Homepage/Banner';
-import ToggleFeed from 'components/Homepage/ToggleFeed';
+import Articles from 'components/HomeComponents/Articles';
+import Tags from 'components/HomeComponents/Tags';
+import Banner from 'components/HomeComponents/Banner';
+import ToggleFeed from 'components/HomeComponents/ToggleFeed';
 import MsgError from 'components/MsgError';
 import { CONFIG } from '../../utils/config'
-import Paging from 'components/Homepage/paging';
+import Paging from 'components/HomeComponents/paging';
 // import Homepage from '../components/Homepage'
 
 const defaultParamsArticles = {

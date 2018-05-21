@@ -24,7 +24,7 @@ const makeSelectGetTags = () => createSelector(
 
 const makeSelectGetFaild = () => createSelector(
   selectHomeDomain,
-  (homeState) => homeState.get('error')
+  (homeState) => homeState.get('errors')
 );
 
 const makeSelectParamsArticles = () => createSelector(

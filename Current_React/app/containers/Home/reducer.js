@@ -16,7 +16,7 @@ import {
 const initialState = fromJS({
   'articles': [],
   'tags': [],
-  'error': [],
+  'errors': [],
   'defaultParamsArticles': {},
   'articlesCount': 1,
   'currentPage': 0
@@ -38,10 +38,8 @@ function homeReducer(state = initialState, { type, payload }) {
         .set('tags', payload.tags);
 
     case GET_MESSAGE_ERROR:
-      const listMsg = state.get('error').concat(payload.message)
-
       return state
-        .set('error', listMsg)
+        .update('errors', error => error.concat(payload.message))
 
     case SET_PARAMS_ARTICLES:
       return state
