@@ -22,13 +22,19 @@ import {
   makeSelectParamsArticles,
   makeSelectCurrentPage
 } from './selectors';
+
+import {
+  makeSelectUserLogged
+} from '../User/selectors';
+
 import reducer from './reducer';
 import saga from './saga';
 import {
   GET_ARTICLES,
   GET_TAGS,
   GET_ARTICLES_BY_TAGS,
-  SET_PARAMS_ARTICLES
+  SET_PARAMS_ARTICLES,
+  SET_FAVORITER
 } from './constants';
 
 import Articles from 'components/HomeComponents/Articles';
@@ -59,7 +65,8 @@ export class Home extends React.Component {
       tags,
       msgError,
       paramsArticles,
-      currentPage
+      currentPage,
+      loggedUser
     } = this.props
 
     const filterTags = (tag) => {
@@ -80,17 +87,32 @@ export class Home extends React.Component {
       )
     }
 
+    const toggleYourGlobalFeed = (type) => {
+      this.props.getArticles(
+        defaultParamsArticles, type
+      )
+    }
+
+    const toggleFavoriter = (slug, status) => {
+      this.props.setFavorite(
+        slug, status
+      )
+    }
+
     return (
       <div className="home-page">
         <Banner msgError = { msgError }/>
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
-              <ToggleFeed/>
+              <ToggleFeed
+                toggleYourGlobalFeed = { toggleYourGlobalFeed }
+              />
               <Articles
                 articles = { articles }
                 articlesCount = { articlesCount }
                 tags = { tags }
+                toggleFavoriter = { toggleFavoriter }
               />
               <Paging
                 articlesCount = { articlesCount }
@@ -122,15 +144,17 @@ const mapStateToProps = createStructuredSelector({
   tags: makeSelectGetTags(),
   msgError: makeSelectGetFaild(),
   paramsArticles: makeSelectParamsArticles(),
-  currentPage: makeSelectCurrentPage()
+  currentPage: makeSelectCurrentPage(),
+  loggedUser: makeSelectUserLogged()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    getArticles: (params) => {
+    getArticles: (params, url = 'articles') => {
       dispatch({
         type: GET_ARTICLES,
         payload: {
+          url,
           params
         }
       })
@@ -157,6 +181,16 @@ function mapDispatchToProps(dispatch) {
         type: SET_PARAMS_ARTICLES,
         payload: {
           params
+        }
+      })
+    },
+
+    setFavorite: (slug, status) => {
+      dispatch({
+        type: SET_FAVORITER,
+        payload: {
+          slug,
+          status
         }
       })
     },

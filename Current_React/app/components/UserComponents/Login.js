@@ -5,7 +5,14 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  Redirect
+} from 'react-router-dom';
+
+import {
+  getUserLocalStorage
+} from '../../utils/mainFunction';
 
 class LoginComponent extends React.Component {
   constructor (props) {
@@ -35,16 +42,32 @@ class LoginComponent extends React.Component {
   }
 
   render() {
+    const {
+      msgError
+    } = this.props
+    const isCurrentUser = getUserLocalStorage();
+
+    if( isCurrentUser ) return (
+      <Redirect to='/' />
+    )
+
     return (
       <div className = "auth-page">
         <div className = "container page">
           <div className = "row">
-
             <div className = "col-md-6 offset-md-3 col-xs-12">
               <h1 className = "text-xs-center">Sign in</h1>
               <p className = "text-xs-center">
                 <Link to="/register" className="dasdas">Need an account?</Link>
               </p>
+
+              {
+                msgError && (
+                  <ul className="error-messages">
+                    <li>{msgError}</li>
+                  </ul>
+                )
+              }
 
               <form onSubmit = { this.onSubmitForm }>
                 <fieldset className = "form-group">

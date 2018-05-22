@@ -9,18 +9,22 @@ import {
 } from 'redux-saga/effects';
 
 import {
-  ON_SUBMIT_AUTHEN
+  ON_SUBMIT_AUTHEN,
+  USER_SUCCESS,
+  USER_ERROR
 } from './constants';
 
 import {
-  postData
+  postData,
+  saveUserToLocalStorage,
+  getUserLocalStorage
 } from '../../utils/mainFunction';
 
 function* onSubmitAuthen ({payload: { user }}) {
   try {
     const url = user.username ? 'users' : 'users/login'
-    console.log(url)
-    const data = yield call(postData,
+
+    const { data } = yield call(postData,
       {
         url,
         data: {
@@ -29,22 +33,20 @@ function* onSubmitAuthen ({payload: { user }}) {
       }
     )
 
-    console.log(data)
-    debugger
-    // yield put({
-    //   type: GET_ARTICLES_SUCCESS,
-    //   payload: { articles, articlesCount }
-    // })
+    saveUserToLocalStorage(data.user)
+    yield put({
+      type: USER_SUCCESS,
+      payload: { data }
+    })
   }
 
-  catch (error) {
-    console.log(error)
-    // yield put({
-    //   type: GET_MESSAGE_ERROR,
-    //   payload: {
-    //     message: `Msg Error Articles: ${message}`
-    //   }
-    // })
+  catch ({message}) {
+    yield put({
+      type: USER_ERROR,
+      payload: {
+        message
+      }
+    })
   }
 }
 

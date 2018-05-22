@@ -18,16 +18,21 @@ import HomePage from 'containers/Home';
 import User from 'containers/User';
 import Header from './Header';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Login from 'components/UserComponents/Login'
-import Register from 'components/UserComponents/Register'
+import Login from 'components/UserComponents/Login';
+import Register from 'components/UserComponents/Register';
+import {
+  getUserLocalStorage
+} from '../../utils/mainFunction';
 
 const loginHoc = User(Login)
 const registerHoc = User(Register)
 
 export default function App() {
+  const currentUser = getUserLocalStorage();
+
   return (
     <div>
-      <Header />
+      <Header currentUser = { currentUser } />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={loginHoc} />

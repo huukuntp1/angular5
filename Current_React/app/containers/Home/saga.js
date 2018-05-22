@@ -14,18 +14,23 @@ import {
   GET_TAGS,
   GET_TAGS_SUCCESS,
   GET_MESSAGE_ERROR,
-  GET_ARTICLES_BY_TAGS
+  GET_ARTICLES_BY_TAGS,
+  SET_FAVORITER
 } from './constants';
 
 import {
-  getData
+  getData,
+  postData,
+  deleteData
 } from '../../utils/mainFunction';
 
-function* getArticles ({payload: { params }}) {
+function* getArticles ({payload: { url, params }}) {
   try {
     const { data: { articlesCount, articles } } = yield call(getData,
-      { url: '/articles', params }
+      { url, params }
     )
+
+    console.log(articles)
 
     yield put({
       type: GET_ARTICLES_SUCCESS,
@@ -65,7 +70,32 @@ function* getTags () {
   }
 }
 
+function* setFavoriter({payload: { slug, status }}) {
+  try {
+    if(status) {
+      yield call(postData, {
+        url: `articles/${slug}/favorite`
+      })
+    } else {
+      yield call(deleteData, {
+        url: `articles/${slug}/favorite`
+      })
+    }
+
+  }
+
+  catch ({message}) {
+    yield put({
+      type: GET_MESSAGE_ERROR,
+      payload: {
+        message: `Msg Error Tags: ${message}`
+      }
+    })
+  }
+}
+
 export default function* defaultSaga() {
   yield takeEvery(GET_ARTICLES, getArticles)
   yield takeEvery(GET_TAGS, getTags)
+  yield takeEvery(SET_FAVORITER, setFavoriter)
 }

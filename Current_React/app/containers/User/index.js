@@ -21,17 +21,15 @@ import {
   ON_SUBMIT_AUTHEN
 } from './constants';
 
-// export class User extends React.Component { // eslint-disable-line react/prefer-stateless-function
-//   render() {
-//     return (
-//       <div>
-//       </div>
-//     );
-//   }
-// }
+import {
+  makeSelectMsgError,
+  makeSelectUserLogged
+} from './selectors';
 
 const mapStateToProps = createStructuredSelector({
   user: makeSelectUser(),
+  msgError: makeSelectMsgError(),
+  loggedUser: makeSelectUserLogged()
 });
 
 function mapDispatchToProps(dispatch) {

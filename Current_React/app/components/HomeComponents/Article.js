@@ -1,6 +1,17 @@
 import React from 'react';
 
 class Article extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+      isFavorite: false
+    }
+  }
+
+  handleClickFovorite = (article) => {
+    this.props.toggleFavoriter(article.slug, article.favorited)
+  }
+
   render() {
     const {
       articleItem
@@ -22,7 +33,12 @@ class Article extends React.Component {
               </span>
             </div>
             <button
-              className = "btn btn-outline-primary btn-sm pull-xs-right"
+              className = {
+                articleItem.favorited ?
+                  'btn btn-outline-primary btn-sm pull-xs-right active':
+                  'btn btn-outline-primary btn-sm pull-xs-right'
+              }
+              onClick = { () => this.handleClickFovorite(articleItem) }
             >
               <i className = "ion-heart"></i>
               { articleItem.favoritesCount }

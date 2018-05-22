@@ -5,7 +5,14 @@
 */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  Redirect
+} from 'react-router-dom';
+
+import {
+  getUserLocalStorage
+} from '../../utils/mainFunction';
 
 class RegisterComponent extends React.Component {
   constructor (props) {
@@ -42,6 +49,14 @@ class RegisterComponent extends React.Component {
   }
 
   render() {
+    const {
+      msgError
+    } = this.props
+    const isCurrentUser = getUserLocalStorage();
+
+    if( isCurrentUser ) return (
+      <Redirect to='/' />
+    )
 
     return (
       <div className = "auth-page">
@@ -56,13 +71,13 @@ class RegisterComponent extends React.Component {
                 <Link to="/login" className="dasdas">Have an account?</Link>
               </p>
 
-              {/* {
-                isError && (
-                  <ul className = "error-messages">
-                    <li>That email is already taken</li>
+              {
+                msgError && (
+                  <ul className="error-messages">
+                    <li>{msgError}</li>
                   </ul>
                 )
-              } */}
+              }
 
               <form onSubmit = { this.onSubmitForm }>
 

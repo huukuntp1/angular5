@@ -5,7 +5,8 @@ class Articles extends React.Component {
   render() {
     const {
       articles,
-      articlesCount
+      articlesCount,
+      toggleFavoriter
     } = this.props
 
     return (
@@ -15,6 +16,7 @@ class Articles extends React.Component {
             return (
               <Article
                 articleItem = { articleItem }
+                toggleFavoriter = { toggleFavoriter }
                 key = { index }
               />
             )

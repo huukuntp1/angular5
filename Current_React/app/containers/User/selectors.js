@@ -19,7 +19,19 @@ const makeSelectUser = () => createSelector(
   (substate) => substate.toJS()
 );
 
+const makeSelectUserLogged = () => createSelector(
+  selectUserDomain,
+  (substate) => substate.get('info_current_user')
+);
+
+const makeSelectMsgError = () => createSelector(
+  selectUserDomain,
+  (substate) => substate.get('msg_error')
+);
+
 export default makeSelectUser;
 export {
   selectUserDomain,
+  makeSelectUserLogged,
+  makeSelectMsgError
 };

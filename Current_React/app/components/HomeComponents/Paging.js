@@ -32,7 +32,6 @@ class Paging extends React.Component {
                 evt.preventDefault();
 
                 const offset = index * 10
-                console.log(currentPage)
                 goPage(offset)
               }
               return (
