@@ -3,7 +3,9 @@ import { CONFIG } from './config'
 
 axios.defaults.baseURL = CONFIG.url;
 axios.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
-axios.defaults.headers.common['authorization'] = `Token ${getUserLocalStorage().token}`;
+if (getUserLocalStorage()) {
+  axios.defaults.headers.common['authorization'] = `Token ${getUserLocalStorage().token}`;
+}
 const getData = ({url, params = {}}) => {
   const opts = {
     method: 'GET',
@@ -32,6 +34,15 @@ const deleteData = ({url, data = {}}) => {
   return axios(opts)
 }
 
+const putData = ({url, data = {}}) => {
+  const opts = {
+    method: 'PUT',
+    url,
+    data
+  }
+  return axios(opts)
+}
+
 function getUserLocalStorage () {
   return JSON.parse(localStorage.getItem('currentUser'))
 }
@@ -41,6 +52,7 @@ function getUserLocalStorage () {
 // }
 
 const saveUserToLocalStorage = (user = {}) => {
+  console.log(user)
   axios.defaults.headers.common['authorization'] = `Token ${user.token}`;
   localStorage.setItem('currentUser', JSON.stringify(user))
 }
@@ -55,6 +67,7 @@ export {
   getData,
   postData,
   deleteData,
+  putData,
   getUserLocalStorage,
   saveUserToLocalStorage,
   removeUserToLocalStorage

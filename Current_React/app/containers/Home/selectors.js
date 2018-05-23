@@ -9,7 +9,7 @@ const makeSelectHome = () => createSelector(
 
 const makeSelectGetArticles = () => createSelector(
   selectHomeDomain,
-  (homeState) => homeState.get('articles')
+  (homeState) => homeState.get('articles').toJS()
 );
 
 const makeSelectGetArticlesCount = () => createSelector(
@@ -18,6 +18,7 @@ const makeSelectGetArticlesCount = () => createSelector(
 );
 
 const makeSelectGetTags = () => createSelector(
+
   selectHomeDomain,
   (homeState) => homeState.get('tags')
 );

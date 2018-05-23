@@ -15,7 +15,8 @@ import {
   GET_TAGS_SUCCESS,
   GET_MESSAGE_ERROR,
   GET_ARTICLES_BY_TAGS,
-  SET_FAVORITER
+  SET_FAVORITER,
+  UPDATE_ARTICLE
 } from './constants';
 
 import {
@@ -29,8 +30,6 @@ function* getArticles ({payload: { url, params }}) {
     const { data: { articlesCount, articles } } = yield call(getData,
       { url, params }
     )
-
-    console.log(articles)
 
     yield put({
       type: GET_ARTICLES_SUCCESS,
@@ -72,16 +71,29 @@ function* getTags () {
 
 function* setFavoriter({payload: { slug, status }}) {
   try {
-    if(status) {
-      yield call(postData, {
+    if(!status) {
+      const { data: { article } } = yield call(postData, {
         url: `articles/${slug}/favorite`
+      })
+
+      yield put({
+        type: UPDATE_ARTICLE,
+        payload: {
+          article
+        }
       })
     } else {
-      yield call(deleteData, {
+      const { data: {  article } } = yield call(deleteData, {
         url: `articles/${slug}/favorite`
       })
-    }
 
+      yield put({
+        type: UPDATE_ARTICLE,
+        payload: {
+          article
+        }
+      })
+    }
   }
 
   catch ({message}) {

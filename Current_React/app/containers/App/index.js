@@ -18,6 +18,8 @@ import HomePage from 'containers/Home';
 import User from 'containers/User';
 import Header from './Header';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import CreateEditArticle from 'containers/CreateEditArticle';
+import SettingProfile from 'containers/SettingProfile';
 import Login from 'components/UserComponents/Login';
 import Register from 'components/UserComponents/Register';
 import {
@@ -37,6 +39,8 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/login" component={loginHoc} />
         <Route path="/register" component={registerHoc} />
+        <Route path="/article" component={CreateEditArticle} />
+        <Route path="/profile" component={SettingProfile} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

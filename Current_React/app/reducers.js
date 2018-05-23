@@ -9,6 +9,7 @@ import { LOCATION_CHANGE } from 'react-router-redux';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 import homeReducer from 'containers/Home/reducer';
 import userReducer from 'containers/User/reducer';
+import articleReducer from 'containers/CreateEditArticle/reducer';
 
 /*
  * routeReducer
@@ -45,8 +46,9 @@ export default function createReducer(injectedReducers) {
   return combineReducers({
     route: routeReducer,
     language: languageProviderReducer,
-    // home: homeReducer,
+    home: homeReducer,
     user : userReducer,
+    article : articleReducer,
     ...injectedReducers,
   });
 }

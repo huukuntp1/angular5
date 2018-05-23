@@ -10,7 +10,8 @@ import {
   GET_ARTICLES_SUCCESS,
   GET_TAGS_SUCCESS,
   GET_MESSAGE_ERROR,
-  SET_PARAMS_ARTICLES
+  SET_PARAMS_ARTICLES,
+  UPDATE_ARTICLE
 } from './constants';
 
 const initialState = fromJS({
@@ -30,7 +31,7 @@ function homeReducer(state = initialState, { type, payload }) {
 
     case GET_ARTICLES_SUCCESS:
       return state
-        .set('articles', payload.articles)
+        .set('articles', fromJS(payload.articles))
         .set('articlesCount', payload.articlesCount);
 
     case GET_TAGS_SUCCESS:
@@ -44,6 +45,31 @@ function homeReducer(state = initialState, { type, payload }) {
     case SET_PARAMS_ARTICLES:
       return state
         .set('defaultParamsArticles', payload.params)
+
+    case UPDATE_ARTICLE:
+      const {
+        article : { slug, favorited, favoritesCount }
+      } = payload
+
+      return state.updateIn(['articles'],
+        listArticles => {
+          return listArticles.map(itemArticle => {
+            if( itemArticle.get('slug') === slug ) {
+              return itemArticle
+                .update(
+                  'favorited',
+                  fav => favorited
+                )
+                .update(
+                  'favoritesCount',
+                  favsC => favoritesCount
+                )
+            }
+
+            return itemArticle
+          })
+        }
+      )
 
     default:
       return state;
