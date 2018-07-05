@@ -8,22 +8,11 @@ var userSchema = new Schema({
     password: { type: String, required: true, select: false }
 })
 
-userSchema.pre('save', (next) => {
+userSchema.methods.comparePassword = function(password) {
   var user = this;
+  var crrPass = bcrypt.hashSync(user.password);
 
-  // !user.isModified('password') && next();
-   
-  bcrypt.hash(user.password, null, null, function (err, hash) {
-    err && next(err);
-
-    user.password = hash;
-    next();
-  })
-})
-
-userSchema.methods.comparePassword = function (password) {
-  var user = this;
-  return bcrypt.compareSync(password, user.password);
+  return bcrypt.compareSync(password, crrPass);
 }
 
 module.exports = mongoose.model('User', userSchema);

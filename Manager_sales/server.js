@@ -17,6 +17,8 @@ app.use(morgan('dev'));
 var api = require('./app/routes/api')(app, express);
 app.use('/api', api);
 
+app.use(express.static(`${__dirname}/public`));
+
 app.get('*', (req, res) => {
 	res.sendFile(__dirname + '/public/views/index.html');
 })
