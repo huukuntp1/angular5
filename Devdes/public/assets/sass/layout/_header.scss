@@ -1,0 +1,376 @@
+// Start header
+.header {
+    background: $bg-header;
+    z-index: 9;
+    width: 100%;
+    transition: all .3s;
+    padding: 15px 0;
+    @include small {
+        padding: 20px 0;
+    }
+    @include largeCustom {
+        padding: 25px 0;
+    }
+    a {
+        color: $white;
+        font-size: 16px;
+        letter-spacing: 0.29px;
+        @include largeCustom {
+            font-size: 20px;
+        }
+        &:hover {
+            color: rgba($color: $white, $alpha: 0.6);
+        }
+    }
+    &-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 0;
+        transition: all .5s;
+        .header-logo {
+            @include small {
+                width: 210px;
+                i {
+                    font-size: 45px;
+                }
+            }
+        }
+    }
+    &-logo {
+        width: 120px;
+        @include mobile {
+            width: 200px;
+        }
+        @include medium {
+            width: 273px;
+        }
+        transition: all .3s;
+        i {
+            font-size: 28px;
+            @include mobile {
+                font-size: 45px;
+            }
+            @include medium {
+                font-size: 50px;
+            }
+            @include largeCustom {
+                font-size: 65px;
+            }
+        }
+    }
+    &-right {
+        position: relative;
+        @include small {
+            height: 45px;
+            line-height: 45px;
+        }
+        @include largeCustom {
+            height: 54px;
+            line-height: 54px;
+        }
+        .link-job {
+            margin: 0 10px;
+            @include large {
+                margin: 0 15px;
+            }
+            @include largeCustom {
+                margin: 0 20px;
+            }
+        }
+        .btn-post-job {
+            height: 40px;
+            width: 130px;
+            border-radius: 27px;
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.29px;
+            margin-right: 7px;
+            @include large {
+                font-size: 16px;
+                line-height: 25px;
+            }
+            @include largeCustom {
+                margin-right: 12px;
+                height: 54px;
+                width: 172px;
+                font-size: 20px;
+                line-height: 40px;
+            }
+        }
+    }
+    &-lang {
+        width: 100px;
+    }
+    &-notification {
+        width: 54px;
+        &.show {
+            .header-notification-icon {
+                background: $white;
+                color: $primary-color;
+            }
+        }
+        &-icon {
+            transition: all .3s;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border: 1px solid $white;
+            border-radius: 50%;
+            color: $white;
+            @include largeCustom {
+                width: 54px;
+                height: 54px;
+                line-height: 50px;
+            }
+            i {
+                font-size: rem(20px);
+                @include largeCustom {
+                    font-size: rem(24px);
+                }
+            }
+        }
+        &-group {
+            padding: 0;
+            width: 434px;
+            border-radius: 4px;
+            border: 1px solid $border-color;
+            box-shadow: 0 2px 7px 0 rgba(228, 234, 237, 0.45);
+            &-title {
+                padding: 15px 25px;
+                border-bottom: 1px solid $border-color;
+                h3 {
+                    font-size: 18px;
+                    margin: 0;
+                }
+            }
+        }
+        &-list {
+            overflow-Y: scroll;
+            @include medium {
+                overflow-Y: initial;
+                max-height: 450px;
+            }
+        }
+        &-item {
+            padding: 10px 25px;
+            border-bottom: 1px solid $border-color;
+            &:last-child {
+                border-bottom: 0px;
+                margin-bottom: 50px;
+                @include small {
+                    margin-bottom: 0px;
+                }
+            }
+            .avata {
+                border-radius: 50%;
+            }
+            .media-body {
+                line-height: initial;
+                p {
+                    font-size: 14px;
+                    line-height: 21px;
+                    margin-bottom: 0;
+                }
+            }
+            .time {
+                font-size: 12px;
+                line-height: 14px;
+                color: #A1A5AF;
+            }
+        }
+        &-mobile {
+            position: fixed;
+            z-index: 10;
+            background: #fff;
+            width: 100%;
+            top: 0;
+            min-height: 100vh;
+            overflow-y: hidden;
+            height: 100%;
+            right: 100%;
+            transition: all .5s;
+            &.show {
+                right: 0;
+                @include medium {
+                    right: 100%;
+                }
+            }
+            &-title {
+                padding: 15px 25px;
+                border-bottom: 1px solid $border-color;
+                background: $primary-color;
+                position: relative;
+                .btn-back {
+                    color: $white;
+                    position: absolute;
+                    left: 25px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    i {
+                        font-size: 16px;
+                        @include small {
+                            font-size: 18px;
+                        }
+                    }
+                }
+                h3 {
+                    font-size: 16px;
+                    letter-spacing: 0.23px;
+                    color: $white;
+                    margin-bottom: 0px;
+                    @include small {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+    &-login {
+        &-icon {
+            cursor: pointer;
+            color: $white;
+            .name {
+                font-size: 20px;
+                color: $white;
+                letter-spacing: 0.29px;
+                display: none;
+                @include large {
+                    display: inline-block;
+                }
+            }
+            .avata {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                @include largeCustom {
+                    width: 55px;
+                    height: 55px;
+                }
+            }
+            a {
+                letter-spacing: 0.29px;
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+        &-group {
+            position: absolute;
+            top: 100%;
+            line-height: initial;
+            right: 0;
+            width: 260px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            box-shadow: 0 2px 7px 0 rgba(228, 234, 237, 0.45);
+            margin-top: 15px;
+            display: none;
+            z-index: 9;
+            @include large {
+                width: 290px;
+            }
+            .update-account {
+                padding: 10px 20px;
+                @include large {
+                    padding: 14px 25px;
+                }
+                a {
+                    font-size: 20px;
+                    line-height: 24px;
+                }
+            }
+            li {
+                transition: all .3s;
+                a {
+                    color: $web-color;
+                    padding: 10px 20px;
+                    display: block;
+                    @include large {
+                        padding: 14px 25px;
+                    }
+                }
+                .icon {
+                    color: #131B34;
+                    font-size: rem(20px);
+                    transition: all .3s;
+                    @include large {
+                        font-size: rem(24px);
+                    }
+                }
+                .link {
+                    font-size: rem(18px);
+                    @include large {
+                        font-size: rem(20px);
+                    }
+                }
+                &:hover {
+                    background: $primary-color;
+                    a,
+                    .icon {
+                        color: $white;
+                    }
+                }
+                &:nth-last-child(2) {
+                    padding-bottom: 6px;
+                    @include large {
+                        margin-bottom: 10px;
+                    }
+                }
+                &:last-child {
+                    border-top: 1px solid #D1D8DC;
+                    a {
+                        padding: 15px 20px;
+                        @include large {
+                            padding: 20px 25px;
+                        }
+                    }
+                }
+            }
+        }
+        &-mobile {
+            &-icon {
+                font-size: 24px;
+                color: $white;
+                cursor: pointer;
+                @include mobile {
+                    font-size: 35px;
+                }
+                @include small {
+                    font-size: 40px;
+                }
+            }
+            &-avata {
+                width: 23px;
+                height: 23px;
+                @include small {
+                    width: 45px;
+                    height: 45px;
+                }
+                img {
+                    border-radius: 50%;
+                }
+                &.notifi-show {
+                    position: relative;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 3px;
+                        right: -2px;
+                        width: 10px;
+                        height: 10px;
+                        border-radius: 50%;
+                        background: $primary-color;
+                        @include small {
+                            width: 15px;
+                            height: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+} // End Header

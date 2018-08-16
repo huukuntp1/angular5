@@ -1,0 +1,117 @@
+/*================================
+=            Form log            =
+================================*/
+
+.form-log {
+    label {
+        color: $label-color;
+        letter-spacing: 0.23px;
+        line-height: 18px;
+        font-size: 14px;
+        @include small {
+            font-size: 16px;
+        }
+    }
+    .form-control {
+        border: 1px solid $border-color;
+        font-size: 16px;
+        padding: 10px;
+        @include small {
+            font-size: rem(18px);
+            padding: 15px;
+        }
+    }
+    input::-webkit-input-placeholder {
+        color: $placeholder-color;
+        letter-spacing: 0.26px;
+        font-size: 16px;
+        @include small {
+            font-size: rem(18px);
+        }
+    }
+    a {
+        letter-spacing: 0.2px;
+        font-size: rem(14px);
+        text-decoration: underline;
+    }
+    button {
+        font-weight: 500;
+        letter-spacing: 0.26px;
+        line-height: 23px;
+        font-size: 16px;
+        @include small {
+            font-size: rem(18px);
+        }
+    }
+    .form-group {
+        margin-bottom: 20px;
+        @include large {
+            margin-bottom: 25px;
+        }
+    }
+    .text-help {
+        font-size: 16px;
+        letter-spacing: 0.26px;
+        @include small {
+            font-size: 18px;
+        }
+        a {
+            font-size: 16px;
+            @include small {
+                font-size: 18px;
+            }
+        }
+    }
+    .label-small {
+        font-size: 14px;
+    }
+    .field-icon {
+        float: right;
+        margin-right: 10px;
+        margin-top: -34px;
+        position: relative;
+        z-index: 2;
+        @include small {
+            margin-top: -41px;
+        }
+    }
+    .custom-control-label {
+        padding-left: 10px;
+        &:before {
+            width: 16px;
+            top: -2px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: $white;
+            border: 1px solid $border-color;
+            box-shadow: none !important;
+            @include small {
+                width: 20px;
+                height: 20px;
+            }
+            @include large {
+                width: 25px;
+                height: 25px;
+            }
+        }
+        &:after {
+            width: 16px;
+            height: 16px;
+            top: -4px;
+            left: -26px;
+            @include small {
+                width: 20px;
+                height: 20px;
+            }
+            @include large {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+    .custom-control-input:focus~.custom-control-indicator {
+        box-shadow: none !important;
+    }
+}
+
+/*=====  End of Form log  ======*/

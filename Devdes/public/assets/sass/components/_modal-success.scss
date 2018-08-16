@@ -1,0 +1,165 @@
+// start modal-success
+#sigup-social-success {
+    .modal-dialog {
+        @include large {
+            max-width: 700px;
+        }
+        @include largeCustom {
+            max-width: 936px;
+        }
+        p {
+            margin: 15px 0;
+        }
+    }
+}
+
+.modal {
+    &-success .modal-dialog {
+        @include large {
+            max-width: 700px;
+        }
+    }
+    .close {
+        @include vertical-middle;
+        font-size: 14px;
+        right: 15px;
+        color: $white;
+        @include small {
+            font-size: 16px;
+        }
+    }
+    &-title {
+        padding: 15px;
+        border-radius: 6px 6px 0 0;
+        background-color: $web-color;
+        color: $white;
+        position: relative;
+        box-shadow: 0 2px 7px 0 rgba(228, 234, 237, 0.45);
+        @include small {
+            padding: 18px;
+        }
+        h5 {
+            font-size: 18px;
+            margin-bottom: 0px;
+            @include small {
+                font-size: 20px;
+            }
+            @include large {
+                font-size: 24px;
+            }
+        }
+    }
+    &-body {
+        padding: 5px 10px 25px;
+        @include small {
+            padding: 15px 35px 45px;
+        }
+        @include largeCustom {
+            padding: 35px 35px 50px;
+        }
+        .icon {
+            font-size: 35px;
+            color: $primary-color;
+            margin-bottom: 5px;
+            @include small {
+                font-size: 40px;
+                margin-bottom: 10px;
+            }
+            @include largeCustom {
+                margin-bottom: 25px;
+            }
+        }
+        p {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 10px;
+            @include small {
+                font-size: 16px;
+                line-height: 25px;
+                margin-bottom: 25px;
+            }
+            @include large {
+                font-size: 18px;
+                line-height: 27px;
+            }
+            @include largeCustom {
+                margin-bottom: 40px;
+            }
+        }
+        .modal-action {
+            margin-bottom: 10px;
+            @include small {
+                margin-bottom: 30px;
+            }
+            @include largeCustom {
+                margin-bottom: 45px;
+            }
+            &-item {
+                // width: 150px;
+                // @include largeCustom {
+                //     width: 216px;
+                // }
+            }
+            &-icon {
+                border-radius: 50%;
+                height: 100px;
+                width: 100px;
+                background-color: rgba(5, 153, 102, 0.06);
+                text-align: center;
+                line-height: 100px;
+                margin-bottom: 15px;
+                @include small {
+                    height: 120px;
+                    width: 120px;
+                    line-height: 120px;
+                }
+                @include large {
+                    height: 150px;
+                    width: 150px;
+                    line-height: 145px;
+                }
+                @include largeCustom {
+                    height: 216px;
+                    width: 216px;
+                    line-height: 200px;
+                }
+                i {
+                    font-size: 45px;
+                    @include small {
+                        font-size: 60px;
+                    }
+                    @include large {
+                        font-size: 90px;
+                    }
+                    @include largeCustom {
+                        font-size: 140px;
+                    }
+                }
+            }
+            &-title {
+                line-height: 23px;
+                font-size: 16px;
+                font-weight: bold;
+                @include large {
+                    font-size: 18px;
+                }
+            }
+        }
+        .btn {
+            padding: 15px 22px;
+            letter-spacing: 0.23px;
+            font-size: 16px;
+            line-height: 24px;
+            min-width: 140px;
+            @include small {
+                font-size: 18px;
+            }
+            @include large {
+                font-size: 20px;
+                min-width: 166px;
+            }
+        }
+    }
+}
+
+// end modal-success

@@ -1,0 +1,27 @@
+/*===========================
+=            OTP            =
+===========================*/
+
+.page-otp {
+    .group-number {
+        span {
+            height: 64px;
+            width: 64px;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            background-color: $white;
+            color: #1A243B;
+            font-size: rem(32px);
+            font-weight: 500;
+            letter-spacing: 0.46px;
+            line-height: 60px;
+            text-align: center;
+            margin: 0 8px;
+            @include mobile {
+                margin: 0 12px;
+            }
+        }
+    }
+}
+
+/*=====  End of OTP  ======*/

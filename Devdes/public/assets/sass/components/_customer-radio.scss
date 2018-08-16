@@ -1,0 +1,33 @@
+// Customer radio
+.custom-control-label {
+    padding-left: 10px;
+    &:before {
+        width: 25px;
+        top: -2px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: $white;
+        border: 1px solid $border-color;
+        box-shadow: none !important;
+    }
+    &:after {
+        width: 30px;
+        height: 30px;
+        top: -4px;
+        left: -26px;
+    }
+}
+
+.custom-control-input:focus~.custom-control-indicator {
+    box-shadow: none !important;
+}
+
+.custom-radio {
+    .custom-control-input:checked~.custom-control-label::after {
+        background-image:url('#{$imgUrl}/icon/ic-check.png');
+    }
+    .custom-control-input:checked~.custom-control-label::before {
+        background-color: transparent;
+    }
+}
+// end customer radio

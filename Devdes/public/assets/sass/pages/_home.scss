@@ -1,0 +1,126 @@
+// Start home
+.home {
+    &-slider {
+        padding-bottom: 110px;
+        position: relative;
+        background: $slider-home-bg;
+        @include largeCustom {
+            padding-bottom: 140px;
+        }
+        .item {
+            padding: 2px;
+            text-align: center;
+            @include mobile {
+                text-align: left;
+            }
+            &-content {
+                padding: 15px;
+                @include largeCustom {
+                    padding: 20px;
+                }
+            }
+            .number-job {
+                border: 1px solid rgba(32, 41, 70, 0.5);
+                border-radius: 20px;
+                letter-spacing: 0.23px;
+                padding: 5px 10px;
+                font-size: 14px;
+                @include small {
+                    font-size: 16px;
+                    min-width: 95px;
+                    padding: 7px 18px;
+                }
+            }
+            .img {
+                margin: 10px 0;
+                img {
+                    width: 100%;
+                    max-width: 130px;
+                    @include small {
+                        width: auto;
+                    }
+                }
+            }
+            .discription {
+                &-title {
+                    font-size: 20px;
+                }
+                &-address {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .slick-arrow {
+            position: absolute;
+            bottom: 30px;
+            height: 40px;
+            width: 40px;
+            border: 1px solid $primary-color;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            transition: all .3s;
+            @include mobile {
+                height: 50px;
+                width: 50px;
+                line-height: 50px;
+            }
+            @include largeCustom {
+                height: 57px;
+                width: 57px;
+                line-height: 57px;
+                bottom: 45px;
+            }
+            i {
+                font-size: 18px;
+                color: $primary-color;
+                @include mobile {
+                    font-size: 24px;
+                }
+            }
+            &:hover {
+                background: $primary-color;
+                i {
+                    color: $white;
+                }
+            }
+        }
+        .slick-next {
+            right: 35%;
+            @include medium {
+                right: 40%;
+            }
+            @include large {
+                right: 45%;
+            }
+        }
+        .slick-prev {
+            left: 35%;
+            @include medium {
+                left: 40%;
+            }
+            @include large {
+                left: 45%;
+            }
+        }
+    }
+}
+
+.page-home {
+    .page-header {
+        @include small {
+            padding-bottom: 60px;
+        }
+        @include largeCustom {
+            padding-top: 15px;
+            padding-bottom: 80px;
+        }
+        &-top {
+            top: -35px;
+            background: $page-banner-bg;
+            @include mobile {
+                top: -50px;
+            }
+        }
+    }
+} // end  HOme

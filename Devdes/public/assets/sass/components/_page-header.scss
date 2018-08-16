@@ -1,0 +1,51 @@
+// header page
+.page-header {
+    position: relative;
+    padding-bottom: 30px;
+    background: $page-banner-bg;
+    @include small {
+        padding-bottom: 45px;
+    }
+    &-top {
+        position: absolute;
+        left: 50%;
+        width: 110%;
+        height: 145px;
+        margin-left: -55%;
+        margin-top: 0;
+        -webkit-transform-origin: 50% 48%;
+        transform-origin: 50% 48%;
+        border-radius: 43%;
+        margin-right: -55%;
+        top: -35px;
+        background: $page-banner-bg;
+    }
+    &-title {
+        font-size: 20px;
+        letter-spacing: 0.69px;
+        @include mobile {
+            font-size: 30px;
+        }
+        @include medium {
+            font-size: 38px;
+        }
+        @include largeCustom {
+            font-size: 48px;
+            line-height: 65px;
+        }
+    }
+    &-description {
+        font-weight: 300;
+        letter-spacing: 0.34px;
+        font-size: 14px;
+        @include mobile {
+            font-size: 16px;
+        }
+        @include small {
+            font-size: 18px;
+        }
+        @include largeCustom {
+            font-size: 24px;
+        }
+    }
+} // end  header page

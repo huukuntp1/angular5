@@ -1,0 +1,141 @@
+// start range-slider
+.range-slider {
+    margin-bottom: 10px;
+    .number-group {
+        font-size: 16px;
+        @include small {
+            font-size: 18px;
+        }
+        .number-input {
+            border: 1px solid #D1D8DC;
+            border-radius: 4px;
+            padding: 5px;
+            @include small {
+                padding: 15px;
+            }
+            span {
+                color: $primary-color;
+            }
+            text-align: center;
+            &:first-of-type {
+                margin-right: 7px;
+            }
+            &:last-of-type {
+                margin-left: 7px;
+            } // vendor-prefix exception
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+            &:invalid,
+            &:out-of-range {
+                border: 2px solid red;
+            }
+        }
+    }
+    .range-group {
+        position: relative;
+        flex: 0 0 100%;
+        height: 30px;
+        .range-input {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            margin-bottom: 0;
+            -webkit-appearance: none; // vendor-prefix exception
+            width: 100%;
+            border-bottom: 0;
+            font-size: 14px;
+            @include small {
+                font-size: 18px;
+            }
+            &:focus {
+                outline: 0; // doesn't seem to allow the track colour to change
+                // &::-webkit-slider-runnable-track, 
+                // &::-ms-fill-lower, 
+                // &::-ms-fill-upper {
+                // 	background: $primary-color; 
+                // }
+            } // vendor prefix exceptions - must be kept seperate to work
+            &::-webkit-slider-runnable-track {
+                width: 100%;
+                height: 6px;
+                cursor: pointer; // animate: .2s;
+                animation: .2s;
+                background-color: $primary-color;
+                border-radius: 2.5px;
+                box-shadow: none;
+                border: 0;
+            }
+            &::-webkit-slider-thumb {
+                z-index: 2;
+                position: relative; // box-shadow: 0px 0px 0px #000;
+                // border: 1px solid #2497e3;
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                background: $white;
+                box-shadow: 0 2px 7px 0 rgba(203, 215, 236, 0.67);
+                border: 1px solid $primary-color;
+                cursor: pointer;
+                -webkit-appearance: none;
+                margin-top: -7px;
+            }
+            &::-moz-range-track {
+                width: 100%;
+                height: 6px;
+                cursor: pointer; // animate: .2s;
+                animation: .2s;
+                background-color: #F0F2F8;
+                border-radius: 2.5px;
+                box-shadow: none;
+                border: 0;
+            }
+            &::-moz-range-thumb {
+                z-index: 2;
+                position: relative;
+                box-shadow: 0px 0px 0px #000;
+                border: 1px solid #2497e3;
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                background: $white;
+                box-shadow: 0 2px 7px 0 rgba(203, 215, 236, 0.67);
+                border: 1px solid $primary-color;
+                cursor: pointer;
+            }
+            &::-ms-track {
+                width: 100%;
+                height: 5px;
+                cursor: pointer; // animate: .2s;
+                animation: .2s;
+                background: transparent;
+                border-color: transparent;
+                color: transparent;
+            }
+            &::-ms-fill-lower,
+            &::-ms-fill-upper {
+                background: $white;
+                box-shadow: 0 2px 7px 0 rgba(203, 215, 236, 0.67);
+                border: 1px solid $primary-color;
+                border-radius: 1px;
+                box-shadow: none;
+                border: 0;
+            }
+            &::-ms-thumb {
+                z-index: 2;
+                position: relative; // box-shadow: 0px 0px 0px #000;
+                // border: 1px solid #2497e3;
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                background: $white;
+                box-shadow: 0 2px 7px 0 rgba(203, 215, 236, 0.67);
+                border: 1px solid $primary-color;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// end range-slider

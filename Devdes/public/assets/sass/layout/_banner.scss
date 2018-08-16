@@ -1,0 +1,224 @@
+/* ==========================================================================
+   Banner
+   ========================================================================== */
+
+.banner {
+    background: $bg-header;
+    color: $white;
+    padding: 10px 0 60px;
+    @include mobile {
+        padding: 30px 0 70px;
+    }
+    @include small {
+        padding: 50px 0 50px;
+    }
+    @include medium {
+        padding: 70px 0;
+    }
+    @include largeCustom {
+        padding: 100px 0;
+    }
+    &-header {
+        margin-bottom: 30px;
+        @include largeCustom {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 20px;
+            letter-spacing: 0.69px;
+            margin-bottom: 0px;
+            @include small {
+                font-size: 35px;
+            }
+            @include largeCustom {
+                font-size: 48px;
+                line-height: 58px;
+            }
+        }
+        span {
+            letter-spacing: 0.34px;
+            font-weight: 300;
+            font-size: rem(14px);
+            @include small {
+                font-size: rem(18px);
+                line-height: 36px;
+            }
+            @include largeCustom {
+                font-size: rem(24px);
+            }
+        }
+    }
+    &-search {
+        margin-bottom: 30px;
+        @include largeCustom {
+            margin-bottom: 40px;
+        }
+        .form-search {
+            .btn:focus,
+            .btn.focus {
+                box-shadow: 0 0 0 transparent;
+            }
+            .input-group-prepend {
+                margin-right: 0;
+            }
+            &-mobile {
+                .search-input {
+                    border-radius: 0 45px 45px 0px !important;
+                    font-size: 14px !important;
+                    @include small {
+                        font-size: 16px !important;
+                    }
+                }
+                .input-group-append {
+                    font-size: 14px;
+                }
+                .button-pin {
+                    border-radius: 45px 0px 0px 45px;
+                }
+                .dropdown-toggle {
+                    border-radius: 0 45px 45px 0px;
+                    font-size: 14px;
+                    font-weight: 300;
+                    color: #9196A2;
+                    @include small {
+                        font-size: 16px;
+                    }
+                    @include medium {
+                        font-size: 20px;
+                    }
+                    @include largeCustom {
+                        font-size: 22px;
+                    }
+                    &::after {
+                        position: absolute;
+                        right: 30px;
+                    }
+                }
+                .search-btn {
+                    font-weight: 500;
+                    font-size: 14px;
+                    border-radius: 45px;
+                    @include small {
+                        font-size: 20px;
+                    }
+                    @include largeCustom {
+                        font-size: 24px;
+                    }
+                }
+            }
+        }
+        .input-group-prepend {
+            @include medium {
+                height: 60px;
+            }
+            @include largeCustom {
+                height: 90px;
+            }
+        }
+        .form-control {
+            @include medium {
+                height: 60px;
+            }
+            @include largeCustom {
+                height: 90px;
+            }
+            &::placeholder {
+                font-size: 14px;
+                font-weight: 300;
+                color: #9196A2;
+                @include small {
+                    font-size: 16px;
+                }
+                @include medium {
+                    font-size: 18px;
+                }
+                @include largeCustom {
+                    font-size: 22px;
+                }
+            }
+            &:focus {
+                box-shadow: 0px 0px 0px transparent;
+                border-left: 0px;
+            }
+        }
+        .icon {
+            &-search {
+                font-size: 16px;
+                @include small {
+                    font-size: 28px;
+                }
+                @include medium {
+                    font-size: 30px;
+                }
+                @include largeCustom {
+                    font-size: 40px;
+                }
+            }
+            &-pin {
+                font-size: 16px;
+                @include small {
+                    font-size: 25px;
+                }
+                @include largeCustom {
+                    font-size: 32px;
+                }
+            }
+        }
+        .button-search {
+            border-radius: 45px 0px 0px 45px;
+        }
+        .button-search-mobile {
+            border-radius: 45px 0px 0px 45px;
+        }
+        .dropdown-toggle {
+            letter-spacing: 0.29px;
+            font-size: 14px !important;
+            @include small {
+                font-size: 18px !important;
+            }
+            @include largeCustom {
+                font-size: 20px !important;
+            }
+            &:after {
+                font-size: 14px;
+            }
+            span {
+                vertical-align: text-bottom;
+                display: inline-block;
+            }
+        }
+        #button-search-left {
+            border-radius: 0px 45px 45px 0px;
+            font-weight: 500;
+            font-size: 18px;
+            @include largeCustom {
+                font-size: 24px;
+            }
+        }
+        .input-group-append,
+        .autocomplete {
+            height: 60px;
+            @include largeCustom {
+                height: 90px;
+            }
+        }
+    }
+    &-search-key {
+        a {
+            border-radius: 100px;
+            min-width: 70px;
+            font-size: rem(12px);
+            letter-spacing: 0.26px;
+            @include mobile {
+                font-size: 13px;
+            }
+            @include largeCustom {
+                font-size: rem(18px);
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   End Banner
+   ========================================================================== */

@@ -1,0 +1,120 @@
+/*================================
+=            Page Log            =
+================================*/
+
+.page-log {
+    .close-form {
+        background-color: #E4E9EF;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        position: relative;
+        transition: all .3s;
+        font-size: 16px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 3;
+        @include small {
+            height: 56px;
+            width: 56px;
+            top: 30px;
+            right: 30px;
+        }
+        span {
+            color: $web-color;
+            @include vertical-middle;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+    .content-left {
+        background-size: cover;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+    }
+    .content-right {
+        padding: 15px;
+        min-height: 100vh;
+        position: relative;
+        @include small {
+            padding-left: 40px;
+            padding-right: 80px;
+        }
+        @include largeCustom {
+            padding-left: 80px;
+            padding-right: 100px;
+        }
+    }
+    .wapper-form-log {
+        margin-bottom: 90px;
+        @include small {
+            margin-bottom: 0px;
+        }
+        .logo {
+            width: 217px;
+            margin: auto;
+            @include large {
+                width: 272px;
+                margin: inherit;
+            }
+        }
+        .link-tab {
+            a {
+                border: 1px solid $primary-color;
+                font-weight: 500;
+                line-height: 17px;
+                font-size: 14px;
+                padding: 16px;
+                &.active,
+                &:hover {
+                    background: $primary-color;
+                    color: $white;
+                }
+            }
+        }
+        .title {
+            letter-spacing: 0.46px;
+            line-height: 39px;
+            font-size: 20px;
+            text-align: center;
+            @include small {
+                font-size: 32px;
+            }
+            @include large {
+                text-align: left;
+            }
+        }
+    }
+    .form-vertical-middle {
+        @include vertical-middle;
+        left: 15px;
+        right: 15px;
+        @include small {
+            left: 40px;
+            right: 80px;
+        }
+        @include largeCustom {
+            left: 80px;
+            right: 100px;
+        }
+    }
+    .form-help {
+        p {
+            letter-spacing: 0.23px;
+            line-height: 18px;
+            margin-bottom: 3px;
+            font-size: 15px;
+        }
+        a {
+            font-weight: 500;
+            letter-spacing: 0.23px;
+        }
+    }
+}
+
+/*=====  End of Page Log  ======*/

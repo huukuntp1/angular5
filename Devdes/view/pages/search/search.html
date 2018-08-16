@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Devdes title</title>
+    <meta name="description" content="#">
+    <meta name="keywords" content="#">
+    <meta name="author" content="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--#include virtual="../../layout/header-link.html" -->
+    <link rel="stylesheet" href="../../../public/vendor/slick/slick.css">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Modernizr js -->
+    <!-- <script src="../../../public/vendor/modernizr/modernizr.custom.js"></script> -->
+</head>
+
+<body>
+    <!--#include virtual="filter-mobile.html" -->
+    <!--#include virtual="../../layout/menu-mobile.html" -->
+    <div id="main" class="main">
+        <!--#include virtual="../../layout/notification-mobile.html" -->
+        <!--#include virtual="../../layout/header.html" -->
+        <div class="page page-search">
+            <!--#include virtual="../../layout/banner.html" -->
+            <!--#include virtual="../../template-part/header-page.html" -->
+            <div class="container">
+                <div class="wrapper-search row">
+                    <div class="col-lg-3 d-none d-lg-block">
+                        <div class="siderbar">
+                            <div class="siderbar-header d-flex justify-content-between align-items-center">
+                                <h5 class="siderbar-header-title mb-0">
+                                    Filter
+                                </h5>
+                                <a href="" class="siderbar-header-link-all">
+                                    Reset All
+                                </a>
+                            </div>
+                            <!-- end siderbar header -->
+                            <div class="siderbar-content bg-white">
+                                <!-- start siderbar box -->
+                                <div class="siderbar-box">
+                                    <h3 class="siderbar-box-title">
+                                        Loại công việc
+                                    </h3>
+                                    <div class="siderbar-box-content">
+                                        <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                            <p class="mb-0">
+                                                Fulltime
+                                            </p>
+                                            <input type="radio" name="customRadio" class="custom-control-input" id="Fulltime">
+                                            <label class="custom-control-label" for="Fulltime"></label>
+                                        </div>
+                                        <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                            <p class="mb-0">
+                                                Freelance
+                                            </p>
+                                            <input type="radio" name="customRadio" class="custom-control-input" id="Freelance">
+                                            <label class="custom-control-label" for="Freelance"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end  siderbar box -->
+                                <!-- start siderbar box -->
+                                <div class="siderbar-box">
+                                    <h3 class="siderbar-box-title">
+                                        Mức lương/ Ngân sách
+                                    </h3>
+                                    <div class="siderbar-box-content">
+                                        <div class="select-currency">
+                                            <select class="custom-select">
+                                                <option value="1" selected>VND</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <!-- end currency -->
+                                        <!-- With number fields -->
+                                        <div class="filter level-filter level-req">
+                                            <div id="rangeSlider" class="range-slider">
+                                                <div class="number-group d-flex justify-content-between align-items-center">
+                                                    <input class="number-input w-100" type="number" value="10000000" min="0" max="30000000" />
+                                                    <span> - </span>
+                                                    <input class="number-input w-100" type="number" value="2000000" min="0" max="30000000" />
+                                                </div>
+                                                <div class="range-group">
+                                                    <input class="range-input" value="10000000" min="1" max="30000000" step="1" type="range" />
+                                                    <input class="range-input" value="2000000" min="1" max="30000000" step="1" type="range" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- // filter level-filter -->
+                                    </div>
+                                </div>
+                                <!-- end  siderbar box -->
+                                <!-- start siderbar box -->
+                                <div class="siderbar-box">
+                                    <h3 class="siderbar-box-title">
+                                        Danh mục
+                                    </h3>
+                                    <div class="siderbar-box-content">
+                                        <div class="filter-option">
+                                            <div class="filter-option-header">
+                                                <h6>Lập trình</h6>
+                                            </div>
+                                            <div class="filter-option-content">
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Php
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="php">
+                                                    <label class="custom-control-label" for="php"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Html/css
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Html">
+                                                    <label class="custom-control-label" for="Html"></label>
+                                                </div>
+                                                
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Wordpress
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Wordpress">
+                                                    <label class="custom-control-label" for="Wordpress"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Magento
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Magento">
+                                                    <label class="custom-control-label" for="Magento"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Joomla
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Joomla">
+                                                    <label class="custom-control-label" for="Joomla"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        OpenCart
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="OpenCart">
+                                                    <label class="custom-control-label" for="OpenCart"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Ios
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Ios">
+                                                    <label class="custom-control-label" for="Ios"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Thiết kế
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input">
+                                                    <label class="custom-control-label" for="des"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end  filter option -->
+                                        <div class="filter-option">
+                                            <div class="filter-option-header">
+                                                <h6>Thiết kế</h6>
+                                            </div>
+                                            <div class="filter-option-content">
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Thiết kế option 1
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="php">
+                                                    <label class="custom-control-label" for="php"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Thiết kế option 2
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Html">
+                                                    <label class="custom-control-label" for="Html"></label>
+                                                </div>
+
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Thiết kế option 3
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Wordpress">
+                                                    <label class="custom-control-label" for="Wordpress"></label>
+                                                </div>
+                                                <div class="custom-control custom-checkbox d-flex justify-content-between align-items-top pl-0">
+                                                    <p class="mb-0">
+                                                        Thiết kế option 4
+                                                    </p>
+                                                    <input type="checkbox" name="customCheckbox" class="custom-control-input" id="Magento">
+                                                    <label class="custom-control-label" for="Magento"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end  filter option -->
+                                    </div>
+                                </div>
+                                <!-- end  siderbar box -->
+                                <!-- start siderbar box -->
+                                <div class="siderbar-box siderbar-add-checkbox">
+                                    <h3 class="siderbar-box-title">
+                                        Skill
+                                    </h3>
+                                    <div class="siderbar-box-content">
+                                        <form>
+                                            <div class="siderbar-add-checkbox-header">
+                                                <input type="text" onkeydown="addCheckboxStill(this)" class="add_checkbox add_checkbox_still w-100" id="add_checkbox_still" placeholder="Nhập từ khoá đề xuất">
+                                                <input type="text" hidden>
+                                            </div>
+                                        </form> 
+                                        <div id="list-add-checkbox-still">
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                     Html/Css
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Html">
+                                                <label class="custom-control-label" for="Html"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                     Jquery
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Jquery">
+                                                <label class="custom-control-label" for="Jquery"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                     UI/UX
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="UI">
+                                                <label class="custom-control-label" for="UI"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                     Adobe Illustrator
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="AdobeIllustrator">
+                                                <label class="custom-control-label" for="AdobeIllustrator"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                 Adobe photoshop
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Adobephotoshop">
+                                                <label class="custom-control-label" for="Adobephotoshop"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end  siderbar box -->
+                                <!-- start siderbar box -->
+                                <div class="siderbar-box siderbar-add-checkbox">
+                                    <h3 class="siderbar-box-title">
+                                         Thành phố
+                                    </h3>
+                                    <div class="siderbar-box-content">
+                                        <form>
+                                            <div class="siderbar-add-checkbox-header">
+                                                <input type="text" onkeydown="addCheckboxCity(this)" class="add_checkbox add_checkbox_city w-100" id="add_checkbox_city" placeholder="Nhập từ khoá đề xuất">
+                                                <input type="text" hidden>
+                                            </div>
+                                        </form>
+                                        <div id="list-add-checkbox-city">
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                    Html/Css
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Html">
+                                                <label class="custom-control-label" for="Html"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                    Jquery
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Jquery">
+                                                <label class="custom-control-label" for="Jquery"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                    UI/UX
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="UI">
+                                                <label class="custom-control-label" for="UI"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                    Adobe Illustrator
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="AdobeIllustrator">
+                                                <label class="custom-control-label" for="AdobeIllustrator"></label>
+                                            </div>
+                                            <div class="custom-control custom-radio d-flex justify-content-between align-items-top pl-0">
+                                                <p class="mb-0">
+                                                    Adobe photoshop
+                                                </p>
+                                                <input type="radio" name="customRadio" class="custom-control-input" id="Adobephotoshop">
+                                                <label class="custom-control-label" for="Adobephotoshop"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end  siderbar box -->
+                                
+                            </div>
+                            <!-- end  siderbar content -->
+                        </div>
+                        <!-- end  siderbar -->
+                    </div>
+                    <div class="col-lg-9 col-12">
+                        <div class="wrapper-left">
+                            <div class="wrapper-left-header d-flex justify-content-between align-items-center">
+                                <H4>
+                                    322 kết quả tìm kiếm
+                                </H4>
+                                <div class="dropdown d-lg-flex justify-content-lg-end align-items-center d-none">
+                                    <span>Sắp xếp theo:</span>
+                                    <div id="custom-select">
+                                        <select class="custom-select m-0 p-0">
+                                            <option value="1" selected>Mới nhất</option>
+                                            <option value="2">Two</option>
+                                            <option value="3">Three</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- endn dropdown -->
+                                <div class="wrapper-left-filter-button d-block d-lg-none">
+                                    <i class="icon-filter"></i>
+                                </div>
+                            </div>
+                            <!-- end wrapper left header -->
+                            <div class="wrapper-left-content">
+                                <div class="media-list">
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!--#include virtual="media.html" -->
+                                    <!-- end media -->
+                                    <a class="btn-redmore d-block text-center my-4" href="">Xem thêm <i class="icon-arrow-down"></i></a>
+                                </div>
+                                <!-- end media list -->
+                            </div>
+                            <!-- end  wrapper-left content -->
+                        </div>
+                        <!-- end  wrapper left -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#include virtual="../../layout/footer.html" -->
+        <!--#include virtual="../../layout/footer-bottom.html" -->
+    </div>
+    <!--#include virtual="../../layout/footer-link.html" -->
+    <script src="../../../public/vendor/slick/slick.min.js"></script>
+    <script src="search.js"></script>
+    <script src="../../../public/assets/js/autocomplate.js"></script>
+    <script src="../../../public/assets/js/todo-list.js"></script>
+</body>
+
+</html>

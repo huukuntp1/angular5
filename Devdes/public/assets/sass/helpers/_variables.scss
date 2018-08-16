@@ -1,0 +1,65 @@
+//font family
+//color
+//start with assigning color
+//create grayscale
+// url base
+// responsive break point
+// font weight
+// header topbar
+// logo
+//header
+//menu
+//list dropdown
+// footer
+// menu footer
+// menu support
+// copy right
+// font family
+$font-base:16px;
+$primary-font: 'Helvetica Neue';
+$primary-font-size: rem($font-base);
+// color
+// Start with assigning color names to specific hex values.
+$white: #fff;
+$green: #059966;
+$green-800: #007D52;
+$blue: #2467B7;
+$gray-200:#f0f2f8;
+$gray-dark: #202946;
+$gray: #26282C;
+$gray-lighter: #D1D8DC;
+$gray-800:#131B34; // $green-lighter:						#A0D46B;
+// $blue:								#4A90E2;
+// $blue-lighter:						#7AD2BE;
+// $violet:							#C078FF;
+// $orange:							#F5A623;
+// $brown:								#B07540;
+// $green:								#86be57;
+$primary-color: $green;
+$web-color: $gray-dark;
+$label-color: $gray;
+$border-color: $gray-lighter;
+$placeholder-color: #BDBDBD;
+// $web-color-light: 					#E0E8ED;
+// home
+$bg-header: $green-800;
+$page-banner-bg: $gray-200;
+$slider-home-bg: $gray-200;
+// Menu mobile
+$menu-mobile: $gray-200; // footer
+$footer-bg:$gray-800; // url base
+$imgUrl: '../images';
+// responsive break point
+$largeCustom: 1367px;
+$large: 1200px;
+$md: 992px;
+$small: 768px;
+$mobile: 576px;
+// font weight
+$light: 300;
+$normal: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$ultra-bold: 900;

@@ -1,0 +1,79 @@
+// start social-share
+.social-share {
+    position: fixed;
+    right: 0;
+    z-index: 10;
+    left: 0;
+    margin: auto;
+    bottom: 0;
+    text-align: center;
+    @include small {
+        transform: translateY(-50%);
+        top: 50%;
+        left: auto;
+        bottom: auto;
+    }
+    li {
+        height: 41px;
+        width: 60px;
+        transition: all .5s;
+        border: 1px solid transparent;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 1px;
+        @include small {
+            margin: 5px 0;
+            display: block;
+        }
+        &:hover {
+            box-shadow: 0 0 18px 0 rgba(194, 215, 216, 0.27);
+            border-color: rgba(220, 248, 238, 0.64);
+        }
+        a {
+            font-size: 14px;
+            display: block;
+            letter-spacing: 0.2px;
+            text-align: center;
+            line-height: 41px;
+        }
+        i {
+            font-size: 24px;
+            color: $white;
+        }
+        &.or {
+            box-shadow: 0 0 18px 0 rgba(194, 215, 216, 0.27);
+            border: 1px solid rgba(220, 248, 238, 0.64);
+            position: relative;
+            margin-right: 15px;
+            background: $white;
+            @include small {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                margin: auto;
+                top: 100%;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 10px 0 10px 10px;
+                border-color: transparent transparent transparent #007bff;
+                @include small {
+                    border-width: 10px 10px 0 10px;
+                    border-color: rgba(220, 248, 238, 0.64) transparent transparent transparent;
+                }
+            }
+        }
+        &.google {
+            background-color: #D63A4D;
+        }
+        &.facebook {
+            background-color: #3B5998;
+        }
+    }
+} // end social-share

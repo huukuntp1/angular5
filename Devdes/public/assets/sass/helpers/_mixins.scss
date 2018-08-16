@@ -1,0 +1,186 @@
+@mixin vertical-middle($position: absolute) {
+    position: $position;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@mixin center-box() {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin horizontal-center() {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@mixin grid($number, $padding:null) {
+    width: percentage(100 / $number*0.01);
+    @if $padding !=null {
+        padding: {
+            left: $padding;
+            right: $padding;
+        }
+    }
+}
+
+@mixin largeCustom {
+    @media (min-width: $largeCustom) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: $large) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: $md) {
+        @content;
+    }
+}
+
+@mixin small {
+    @media (min-width: $small) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin media($min-max, $break-point) {
+    @media ($min-max: $break-point) {
+        @content;
+    }
+}
+
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+    $src: null;
+    $extmods: ( eot: "?", svg: "#" + str-replace($name, " ", "_"));
+    $formats: ( otf: "opentype", ttf: "truetype");
+    @each $ext in $exts {
+        $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+    }
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+@mixin placeholder {
+    $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+    @each $placeholder in $placeholders {
+        &:#{$placeholder}-placeholder {
+            @content;
+        }
+    }
+}
+
+// =============================================================================
+// button switdh
+// =============================================================================
+@mixin can-toggle-branding( $can-toggle-off-color: #777,
+$can-toggle-on-color: #059966,
+$can-toggle-inactive-text: rgba(white, 0.5),
+$can-toggle-transition: cubic-bezier(0, 1, 0.5, 1)) {
+    input[type="checkbox"] {
+        &[disabled]~label {
+            color: rgba($can-toggle-off-color, 0.5);
+        }
+        &:checked {
+            ~label {
+                .can-toggle__switch {
+                    border: 1px solid $can-toggle-on-color;
+                    &:after {
+                        color: darken($can-toggle-on-color, 5%);
+                    }
+                }
+            }
+        }
+    }
+    label {
+        .can-toggle__label-text {
+            flex: 1;
+        }
+        .can-toggle__switch {
+            &:before {
+                color: $can-toggle-inactive-text;
+            }
+            &:after {
+                // Autoprefixer choked here, so making the prefixes explicit
+                -webkit-transition: -webkit-transform 0.3s $can-toggle-transition;
+                transition: transform 0.3s $can-toggle-transition;
+                color: $can-toggle-off-color;
+            }
+        }
+    }
+}
+
+@mixin can-toggle-appearance ( $can-toggle-width: 120px,
+$can-toggle-height: 36px,
+$can-toggle-border-radius: 4px,
+$can-toggle-offset: 2px,
+$can-toggle-label-font-size: 14px,
+$can-toggle-switch-font-size: 12px) {
+    $can-toggle-switch-width: $can-toggle-width/2;
+    input[type="checkbox"] {
+        &:focus~label,
+        &:checked {
+            ~label {
+                .can-toggle__switch {
+                    &:after {
+                        transform: translate3d($can-toggle-width - ($can-toggle-switch-width + $can-toggle-offset), 0, 0);
+                    }
+                }
+            }
+        }
+    }
+    label {
+        font-size: $can-toggle-label-font-size;
+        .can-toggle__switch {
+            height: $can-toggle-height;
+            flex: 0 0 $can-toggle-width;
+            border-radius: $can-toggle-border-radius;
+            border: 1px solid #fff;
+            cursor: pointer;
+            &:before {
+                left: $can-toggle-width/2;
+                font-size: $can-toggle-switch-font-size;
+                line-height: $can-toggle-height;
+                width: $can-toggle-width/2;
+                padding: 0 12px;
+            }
+            &:after {
+                top: $can-toggle-offset;
+                color: #059966;
+                left: $can-toggle-offset;
+                border-radius: $can-toggle-border-radius/2;
+                width: $can-toggle-switch-width - $can-toggle-offset;
+                line-height: $can-toggle-height - ($can-toggle-offset*2) - 2px;
+                font-size: $can-toggle-switch-font-size;
+            }
+        }
+    }
+}

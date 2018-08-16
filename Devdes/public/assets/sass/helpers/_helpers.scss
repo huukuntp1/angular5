@@ -1,0 +1,24 @@
+/* ==========================================================================
+   Helpers
+   ========================================================================== */
+
+.container {
+    @include largeCustom {
+        max-width: 1416px;
+    }
+}
+
+.transition07 {
+    -webkit-transition: all 0.7s ease;
+    transition: all 0.7s ease;
+}
+
+.transition05 {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.transition03 {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}

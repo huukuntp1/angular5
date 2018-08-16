@@ -1,0 +1,19 @@
+/* ==========================================================================
+   Placeholder
+   ========================================================================== */
+
+%display-vertical-middle {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+%list-unstyled {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+%after{
+	position: absolute;
+	content:"";
+}

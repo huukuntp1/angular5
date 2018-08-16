@@ -1,0 +1,61 @@
+/**
+** General  
+**/
+
+html {
+    font-size: 16px;
+    height: 100%;
+}
+
+body {
+    font-size: rem($font-base);
+    font-family: $primary-font;
+    overflow-x: hidden;
+    color: $web-color;
+}
+
+a:hover,
+a:focus {
+    outline-style: none;
+    text-decoration: none;
+}
+
+a,
+sup,
+sub {
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: $primary-color;
+    &:hover {
+        color: darken( $primary-color, 10%)
+    }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: $primary-font;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 700;
+}
+
+#main {
+    transition: margin-left .5s;
+    overflow-x: hidden;
+    min-width: 320px;
+}
+
+/**
+** End General
+**/

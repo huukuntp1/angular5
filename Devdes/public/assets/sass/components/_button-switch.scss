@@ -1,0 +1,84 @@
+// Start button switch
+.can-toggle {
+    position: relative;
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    } //overflow: hidden;
+    input[type="checkbox"] {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        &[disabled]~label {
+            pointer-events: none;
+            .can-toggle__switch {
+                opacity: 0.4;
+            }
+        }
+        &:checked {
+            ~label {
+                .can-toggle__switch {
+                    &:before {
+                        content: attr(data-unchecked);
+                        left: 0;
+                    }
+                    &:after {
+                        content: attr(data-checked);
+                    }
+                }
+            }
+        }
+    }
+    label {
+        user-select: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        .can-toggle__switch {
+            position: relative;
+            &:before {
+                content: attr(data-checked);
+                position: absolute;
+                top: 0; // text-transform: uppercase;
+                text-align: center;
+            }
+            &:after {
+                content: attr(data-unchecked);
+                position: absolute;
+                z-index: 5; // text-transform: uppercase;
+                text-align: center;
+                background: white;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+    }
+    &.demo-rebrand-2 {
+        @include can-toggle-branding (transparent, // Off state color
+        $primary-color, // On state color
+        rgba(white, 0.7), // Off state text color
+        cubic-bezier(0.860, 0.000, 0.070, 1.000) // Transition timing function
+        );
+        @include can-toggle-appearance ( 100px, // Toggle width
+        40px, // Toggle height
+        40px, // Toggle border radius
+        2px, // Offset (distance btw switch and box)
+        13px, // Label font size
+        16px);
+        input[type="checkbox"]:checked~label .can-toggle__switch {
+            border: 1px solid #fff;
+        }
+        @include largeCustom {
+            .can-toggle.demo-rebrand-2 label .can-toggle__switch:before {
+                left: 35px;
+                font-size: 20px;
+                font-size: 16px;
+                line-height: 54px;
+                width: 54px;
+            }
+        }
+    }
+}
+
+// End button switch
